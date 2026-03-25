@@ -1,0 +1,15 @@
+{
+    "id": "spanish-language",
+    "name": "Spanish Language",
+    "author": "Killerbite95",
+    "version": "1.0.0",
+    "description": "Traducción completa del panel Pelican al castellano/español.",
+    "category": "language",
+    "url": null,
+    "update_url": null,
+    "namespace": "Killerbite95\\SpanishLanguage",
+    "class": "SpanishLanguagePlugin",
+    "panels": null,
+    "panel_version": null,
+    "composer_packages": null
+}
