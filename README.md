@@ -13,7 +13,6 @@ Colección de plugins personalizados para [Pelican Panel](https://pelican.dev), 
 | Plugin | Versión | Categoría | Descripción |
 |--------|---------|-----------|-------------|
 | [AlienHost Theme](./alienhost-theme/) | 1.0.0 | Tema | Tema oficial de AlienHost con colores púrpura y cyan |
-| [Spanish Language](./spanish-language/) | 1.0.0 | Idioma | Traducción completa del panel al castellano |
 
 ### 🚀 Instalación general
 
@@ -44,7 +43,6 @@ Collection of custom plugins for [Pelican Panel](https://pelican.dev), developed
 | Plugin | Version | Category | Description |
 |--------|---------|----------|-------------|
 | [AlienHost Theme](./alienhost-theme/) | 1.0.0 | Theme | Official AlienHost theme with purple and cyan colors |
-| [Spanish Language](./spanish-language/) | 1.0.0 | Language | Full Spanish translation of the panel |
 
 ### 🚀 General installation
 
