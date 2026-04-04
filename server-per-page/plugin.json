@@ -9,7 +9,9 @@
     "update_url": null,
     "namespace": "Killerbite95\\ServerPerPage",
     "class": "ServerPerPagePlugin",
-    "panels": ["app"],
+    "panels": [
+        "app"
+    ],
     "panel_version": null,
     "composer_packages": null
 }
