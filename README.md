@@ -13,6 +13,7 @@ Colección de plugins personalizados para [Pelican Panel](https://pelican.dev), 
 | Plugin | Versión | Categoría | Descripción |
 |--------|---------|-----------|-------------|
 | [AlienHost Theme](./alienhost-theme/) | 1.0.0 | Tema | Tema oficial de AlienHost con colores púrpura y cyan |
+| [Server Per Page](./server-per-page/) | 1.0.0 | Plugin | Recuerda para siempre la selección de servidores por página |
 
 ### 🚀 Instalación general
 
@@ -43,6 +44,7 @@ Collection of custom plugins for [Pelican Panel](https://pelican.dev), developed
 | Plugin | Version | Category | Description |
 |--------|---------|----------|-------------|
 | [AlienHost Theme](./alienhost-theme/) | 1.0.0 | Theme | Official AlienHost theme with purple and cyan colors |
+| [Server Per Page](./server-per-page/) | 1.0.0 | Plugin | Permanently remembers the user's servers-per-page selection |
 
 ### 🚀 General installation
 
