@@ -29,12 +29,18 @@ class ServerPerPageServiceProvider extends ServiceProvider
         // See Filament\Tables\Concerns\CanPaginateRecords::getTablePerPageSessionKey()
         $sessionKey = 'tables.' . md5(ListServers::class) . '_per_page';
 
+        // Flag to prevent dehydrate from saving during the same request where we
+        // restored the value from DB (otherwise a brand-new session would overwrite
+        // the DB with the temporary default before dehydrate has the correct value).
+        $justRestored = false;
+
         /**
          * RESTORE: On initial mount (new session / incognito), inject the user's
          * saved DB preference into the session so Filament picks it up, and also
-         * set the property directly since bootedInteractsWithTable() already ran.
+         * set the property directly since bootedInteractsWithTable() already ran
+         * with an empty session and defaulted to 10.
          */
-        Livewire::listen('component.mount', function ($component) use ($sessionKey) {
+        Livewire::listen('component.mount', function ($component) use ($sessionKey, &$justRestored) {
             if (!($component instanceof ListServers)) {
                 return;
             }
@@ -64,19 +70,31 @@ class ServerPerPageServiceProvider extends ServiceProvider
             session()->put($sessionKey, $saved);
 
             // Set directly on the component — bootedInteractsWithTable() already ran
-            // with an empty session, so we override its default value here.
+            // with an empty session, so we must override its default value here.
             $component->tableRecordsPerPage = $saved;
+
+            // Signal to the dehydrate listener that we just restored; it should
+            // not overwrite the DB in the same request.
+            $justRestored = true;
         });
 
         /**
-         * SAVE: After the response is sent, the session is fully written (Laravel's
-         * StartSession middleware commits before termination callbacks run).
-         * At this point the session contains the value set by Filament's
-         * updatedTableRecordsPerPage() — i.e. whatever the user just selected.
-         * We persist it to the DB so it survives session expiry across devices.
+         * SAVE: component.dehydrate fires within the normal HTTP request lifecycle,
+         * so auth()->user() is always available. At this point the Livewire component
+         * property already reflects the user's current selection (set by Filament's
+         * updatedTableRecordsPerPage()). We persist it to DB so it survives session
+         * expiry and can be restored across devices / incognito windows.
+         *
+         * We skip the write when:
+         *  - this same request just restored the value (avoid resetting DB to default)
+         *  - the DB already stores the same value (avoid unnecessary writes)
          */
-        app()->terminating(function () use ($sessionKey) {
-            if (!session()->has($sessionKey)) {
+        Livewire::listen('component.dehydrate', function ($component) use (&$justRestored) {
+            if (!($component instanceof ListServers)) {
+                return;
+            }
+
+            if ($justRestored) {
                 return;
             }
 
@@ -85,8 +103,15 @@ class ServerPerPageServiceProvider extends ServiceProvider
                 return;
             }
 
-            $perPage = (int) session()->get($sessionKey);
+            $perPage = (int) ($component->tableRecordsPerPage ?? 0);
             if ($perPage <= 0) {
+                return;
+            }
+
+            // Only persist values that belong to the current layout's option list.
+            $usingGrid    = $user->getCustomization(CustomizationKey::DashboardLayout) === 'grid';
+            $validOptions = $usingGrid ? self::GRID_OPTIONS : self::TABLE_OPTIONS;
+            if (!in_array($perPage, $validOptions, true)) {
                 return;
             }
 
