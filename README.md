@@ -1,4 +1,4 @@
-# Pelican Plugins — by Killerbite95
+# AlienHost Theme
 
 > 🇪🇸 [Español](#español) | 🇬🇧 [English](#english)
 
@@ -6,64 +6,108 @@
 
 ## Español
 
-Colección de plugins personalizados para [Pelican Panel](https://pelican.dev), desarrollados y mantenidos por **Killerbite95**.
+Tema oficial de [AlienHost](https://alienhost.es) para Pelican Panel, con la identidad visual de la marca: colores púrpura y cyan, tipografía moderna y estética futurista.
 
-### 📦 Plugins disponibles
+### ✨ Características
 
-| Plugin | Versión | Categoría | Descripción |
-|--------|---------|-----------|-------------|
-| [AlienHost Theme](./alienhost-theme/) | 1.0.0 | Tema | Tema oficial de AlienHost con colores púrpura y cyan |
-| [Server Per Page](./server-per-page/) | 1.0.0 | Plugin | Recuerda para siempre la selección de servidores por página |
+- 🎨 **Paleta de colores oficial** de AlienHost (púrpura `#6419ff` + cyan `#0073ce`)
+- 🔤 **Tipografía Poppins** — la misma fuente utilizada en alienhost.es
+- 🌑 **Fondo oscuro** con tonos azul marino (`#0f172a`)
+- ⚡ Sin dependencias adicionales de Composer
 
-### 🚀 Instalación general
+### 🎨 Paleta de colores
 
-1. Clona o descarga este repositorio.
-2. Copia la carpeta del plugin deseado en el directorio de plugins de tu instalación de Pelican:
+| Uso | Color | Hex |
+|-----|-------|-----|
+| Primary | Púrpura AlienHost | `#6419ff` |
+| Gray | Azul oscuro | `#0f172a` |
+| Info | Cyan AlienHost | `#0073ce` |
+| Success | Emerald | — |
+| Warning | Amber | — |
+| Danger | Rose | — |
+
+### 📦 Instalación
+
+1. Copia la carpeta `alienhost-theme/` en el directorio de plugins de Pelican:
    ```
-   /pelican/plugins/<nombre-del-plugin>/
+   /pelican/plugins/alienhost-theme/
    ```
-3. Activa el plugin desde el panel de administración en **Admin → Plugins**.
+2. La estructura debe quedar así:
+   ```
+   alienhost-theme/
+   ├── plugin.json
+   ├── README.md
+   ├── DOCUMENTATION.md
+   └── src/
+       └── AlienHostThemePlugin.php
+   ```
+3. Activa el plugin desde **Admin → Plugins**.
 
 ### 📋 Requisitos
 
-- Pelican Panel instalado y funcionando
-- PHP compatible con Filament
+- Pelican Panel con soporte para Filament
+- Sin paquetes de Composer adicionales
 
-### 👤 Autor
+### 📖 Documentación completa
 
-**Killerbite95** — [AlienHost.es](https://alienhost.es)
+Consulta [DOCUMENTATION.md](./DOCUMENTATION.md) para detalles técnicos completos.
 
 ---
 
 ## English
 
-Collection of custom plugins for [Pelican Panel](https://pelican.dev), developed and maintained by **Killerbite95**.
+Official [AlienHost](https://alienhost.es) theme for Pelican Panel, featuring the brand's visual identity: purple and cyan colors, modern typography, and a futuristic aesthetic.
 
-### 📦 Available plugins
+### ✨ Features
 
-| Plugin | Version | Category | Description |
-|--------|---------|----------|-------------|
-| [AlienHost Theme](./alienhost-theme/) | 1.0.0 | Theme | Official AlienHost theme with purple and cyan colors |
-| [Server Per Page](./server-per-page/) | 1.0.0 | Plugin | Permanently remembers the user's servers-per-page selection |
+- 🎨 **Official AlienHost color palette** (purple `#6419ff` + cyan `#0073ce`)
+- 🔤 **Poppins font** — the same font used on alienhost.es
+- 🌑 **Dark background** with navy blue tones (`#0f172a`)
+- ⚡ No additional Composer dependencies
 
-### 🚀 General installation
+### 🎨 Color palette
 
-1. Clone or download this repository.
-2. Copy the desired plugin folder into your Pelican installation plugins directory:
+| Usage | Color | Hex |
+|-------|-------|-----|
+| Primary | AlienHost Purple | `#6419ff` |
+| Gray | Dark Blue | `#0f172a` |
+| Info | AlienHost Cyan | `#0073ce` |
+| Success | Emerald | — |
+| Warning | Amber | — |
+| Danger | Rose | — |
+
+### 📦 Installation
+
+1. Copy the `alienhost-theme/` folder into your Pelican plugins directory:
    ```
-   /pelican/plugins/<plugin-name>/
+   /pelican/plugins/alienhost-theme/
    ```
-3. Enable the plugin from the administration panel under **Admin → Plugins**.
+2. The structure should look like this:
+   ```
+   alienhost-theme/
+   ├── plugin.json
+   ├── README.md
+   ├── DOCUMENTATION.md
+   └── src/
+       └── AlienHostThemePlugin.php
+   ```
+3. Enable the plugin from **Admin → Plugins**.
 
 ### 📋 Requirements
 
-- Pelican Panel installed and running
-- PHP compatible with Filament
+- Pelican Panel with Filament support
+- No additional Composer packages required
 
-### 👤 Author
+### 📖 Full documentation
 
-**Killerbite95** — [AlienHost.es](https://alienhost.es)
+See [DOCUMENTATION.md](./DOCUMENTATION.md) for complete technical details.
 
 ---
 
-> Made with ❤️ for the Pelican community
+| Campo / Field | Valor / Value |
+|---|---|
+| **ID** | `alienhost-theme` |
+| **Versión / Version** | 1.0.0 |
+| **Autor / Author** | Killerbite95 |
+| **Categoría / Category** | Theme |
+| **Web** | [alienhost.es](https://alienhost.es) |
